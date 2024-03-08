@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Register</title>
+    <title>login</title>
 
     <!-- google fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,45 +30,35 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <h2 class="heading1 text-center">Register</h2>
+                <h2 class="heading1 text-center">Login</h2>
 
 
                 <form method="POST">
                   {% csrf_token %}
                   <div class="mb-3">
-                    <li class="list-group-item">{% render_field form.username  class+="form-control" hx-post="/check_available/" hx-trigger="input delay:400ms" hx-target="#availability" hx-swap="innerHTML" placeholder="Username"%}</li>
+                    <li class="list-group-item">{% render_field form.username  class+="form-control"  placeholder="Username"%}</li>
                     <ion-icon class="user-icon" name="person-add-sharp"></ion-icon>
-                    <div class="availability text-start" id="availability">
-                      
-                    </div>
+                   
                   </div>
                   
 
-                  <div class="mb-3">
-                    <li class="list-group-item">{% render_field form.email  class+='form-control' placeholder="Email" %}</li>
-                    <ion-icon class="email-icon" name="mail-sharp"></ion-icon>
-                  </div>
                       
                   <div class="mb-3">
-                    <li class="list-group-item">{% render_field form.password1  class+='form-control' placeholder="Password" %}</li>
+                    <li class="list-group-item">{% render_field form.password  class+='form-control' placeholder="Password" %}</li>
                     <ion-icon class="lock-1" name="lock-closed-sharp"></ion-icon>
                   </div>
                  
 
 
-                  <div class="mb-3">
-                    <li class="list-group-item">{% render_field form.password2  class+='form-control' placeholder="Password" %}</li>
-                    <ion-icon class="lock-2" name="lock-closed-sharp"></ion-icon>
-
-                  </div>
+                 
 
 
                   <div class="text-center" >
-                    <button type="submit" class="btn btn-primary text-center">Sign Up</button>
+                    <button type="submit" class="btn btn-primary text-center">Login</button>
                   </div>
                     
                 </form>
-                <a href="{% url 'login-page' %}" > <p>Already have an account?</p>  </a>
+                <a href="{% url 'register-page' %}" > <p>Dont have an account?</p>  </a>
 
 
 

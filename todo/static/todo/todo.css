@@ -1,0 +1,32 @@
+body {
+  
+    background: linear-gradient(to top, rgba(81, 79, 79, 0.5) 40%, rgba(0, 0, 0, 0.7) 50%), url('landing-images/home-page.jpg');
+
+    background-size: cover;
+    background-position: center;
+    height: 110vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.container{
+    background-color: rgba(0, 0, 0, 0.562);
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.search-section{
+    margin-top: 200px;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,21 @@
+
+
+<div>
+    {% if tasks %}
+        {% for task in tasks %}
+
+        
+                {% if not task.completed %}
+                    <h1  >{{ task.title }} </h1> <p style="display: inline-block;" > {{ task.date_created }}</p>
+                {% else %}
+                    <h1  style="text-decoration: line-through; color: green;">{{ task.title }}  </h1> <p style="display: inline-block; text-decoration: line-through; color: green;" > {{ task.date_created }}</p>
+                {% endif %}
+
+
+        
+            
+                
+                
+        {% endfor %}
+    {% endif %}
+</div>

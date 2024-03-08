@@ -5,7 +5,10 @@ from todo import views
 urlpatterns = [
    path('', views.home, name='home-page'),
    path('register/', views.register, name='register-page'),
-   
+   path('todos/', views.task, name='todo-page'),
+
+   path('create-task/', views.create_task, name='create-task-page'),
+
 ]
 
 

@@ -3,9 +3,11 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 
+from django.contrib.auth.decorators import login_required
+
 #forms
 from todo import forms
-
+from todo.models import Task, Profile
 # Create your views here.
 
 
@@ -15,6 +17,35 @@ def home(request):
 
 
 
+@login_required
+def task(request):
+    profile = request.user.profile
+    tasks = Task.objects.filter(profile=profile)
+
+    context={
+        'tasks':tasks,
+    }
+    return render(request, 'todo/todo.html', context)
+
+
+def create_task(request):
+    profile = request.user.profile
+    get_title = request.POST.get('title__contains')
+    task = Task.objects.create(profile=profile, title=get_title)
+
+    tasks = Task.objects.filter(profile=profile)
+    
+    print(tasks)
+
+    context={
+        'tasks':tasks,
+    }
+    context={'tasks':tasks,
+             
+             }
+    return render(request, 'todo/snippets/create-task.html', context)
+    
+
 def register(request):
 
     if request.method == 'POST':
@@ -22,7 +53,7 @@ def register(request):
 
         if form.is_valid():
             form.save()
-            return redirect('home-page')
+            return redirect('login-page')
         
     else:
         form = forms.UserRegisterForm()
