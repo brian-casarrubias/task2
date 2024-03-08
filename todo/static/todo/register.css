@@ -1,0 +1,43 @@
+
+.container{
+    margin-top: 300px;
+}
+
+.form-label{
+    width: 400px;
+}
+
+.form-control{
+    width: 400px;
+}
+.heading1{
+    font-family: Arial, sans-serif;
+    font-size: 50px;
+}
+.user-icon{
+    position: absolute;
+    margin-left: 370px;
+    margin-top: -30px;
+    font-size: 20px;
+}
+.email-icon{
+    position: absolute;
+    margin-left: 370px;
+    margin-top: -30px;
+    font-size: 20px;
+}
+
+.lock-1{
+    position: absolute;
+    margin-left: 370px;
+    margin-top: -30px;
+    font-size: 20px;
+    
+}
+.lock-2{
+    position: absolute;
+    margin-left: 370px;
+    margin-top: -30px;
+    font-size: 20px;
+    
+}
