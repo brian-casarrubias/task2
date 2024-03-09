@@ -1,5 +1,6 @@
 
-
+<!-- thisis the code snippet we are using throuhout all the cycles
+for example, the create task will use this, the delete task , and the complete task views-->
 
 
 {% if tasks %}
@@ -7,12 +8,12 @@
 
         {% if not task.completed %}
             <div style="margin-bottom: 25px;" class="tasks">
-                <h1 style="display: inline-block;">{{ task.title }}</h1> 
+                <h1  hx-get="{% url 'complete-task-page' task.pk %}" hx-target="#container" hx-swap="innerHTML"  style="display: inline-block; cursor: pointer;">{{ task.title }}</h1> 
                 <span  style="cursor: pointer; position: absolute; margin-top: 8px; margin-left: 25px; font-size: 20px; " class="badge bg-danger" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-delete="{% url 'delete-task-page' task.pk %}" hx-target="#container" hx-swap="innerHTML" hx-confirm="Are you sure you want to delete?"> X </span>
             </div>    
         {% else %}
             <div style="margin-bottom: 25px;" class="tasks">
-                <h1 style="display: inline-block; text-decoration: line-through; color: green;">{{ task.title }}</h1> 
+                <h1 hx-get="{% url 'complete-task-page' task.pk %}" hx-target="#container" hx-swap="innerHTML" style="display: inline-block; cursor: crosshair; text-decoration: line-through; color: green;">{{ task.title }}</h1> 
                 <span style="cursor: pointer; position: absolute; margin-top: 8px; margin-left: 25px; font-size: 20px; " class="badge bg-danger" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-delete="{% url 'delete-task-page' task.pk %}" hx-target="#container" hx-swap="innerHTML" hx-confirm="Are you sure you want to delete?"> X </span>
             </div>    
         {% endif %}
