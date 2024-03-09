@@ -1,6 +1,8 @@
 body {
   
     background: linear-gradient(to top, rgba(81, 79, 79, 0.5) 40%, rgba(0, 0, 0, 0.7) 50%), url('landing-images/home-page.jpg');
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.7) 50%), url('landing-images/running.gif');
+
 
     background-size: cover;
     background-position: center;

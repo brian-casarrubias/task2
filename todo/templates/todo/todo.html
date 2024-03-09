@@ -52,11 +52,10 @@
       </div>
     </nav>
     <div class="search-section">
-      <form id="search-form" hx-post="/search/" hx-trigger="input delay:400ms" hx-target="#title-section-glossary" hx-swap="innerHTML" class="d-flex">
+      <form id="search-form" class="d-flex">
         {% csrf_token %}
         <input id="search-input" class="form-control me-2 search-btn-glossary" type="text" placeholder="Create" name="title__contains">
        
-        <!-- Add more hidden input fields for other article attributes as needed -->
         <button hx-post="{% url 'create-task-page' %}" type="submit"   hx-target="#container" hx-swap="innerHTML" class="btn btn-primary search-button-glossary"><ion-icon style="font-size: 35px;" name="create-outline"></ion-icon></button>
       </form>
 

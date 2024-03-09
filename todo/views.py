@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -32,17 +32,30 @@ def create_task(request):
     profile = request.user.profile
     get_title = request.POST.get('title__contains')
     task = Task.objects.create(profile=profile, title=get_title)
+    
 
     tasks = Task.objects.filter(profile=profile)
     
-    print(tasks)
+    
 
     context={
         'tasks':tasks,
     }
-    context={'tasks':tasks,
-             
-             }
+    
+    return render(request, 'todo/snippets/create-task.html', context)
+
+@login_required
+def delete_task(request, pk):
+    profile = request.user.profile
+    task = get_object_or_404(Task, pk=pk)
+    
+    task.delete()
+    
+    
+    tasks = Task.objects.filter(profile=profile)
+
+    context={'tasks':tasks}
+
     return render(request, 'todo/snippets/create-task.html', context)
     
 

@@ -1,21 +1,26 @@
 
 
-<div>
-    {% if tasks %}
-        {% for task in tasks %}
-
-        
-                {% if not task.completed %}
-                    <h1  >{{ task.title }} </h1> <p style="display: inline-block;" > {{ task.date_created }}</p>
-                {% else %}
-                    <h1  style="text-decoration: line-through; color: green;">{{ task.title }}  </h1> <p style="display: inline-block; text-decoration: line-through; color: green;" > {{ task.date_created }}</p>
-                {% endif %}
 
 
-        
+{% if tasks %}
+    {% for task in tasks %}
+
+        {% if not task.completed %}
+            <div style="margin-bottom: 25px;" class="tasks">
+                <h1 style="display: inline-block;">{{ task.title }}</h1> 
+                <span  style="cursor: pointer; position: absolute; margin-top: 8px; margin-left: 25px; font-size: 20px; " class="badge bg-danger" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-delete="{% url 'delete-task-page' task.pk %}" hx-target="#container" hx-swap="innerHTML" hx-confirm="Are you sure you want to delete?"> X </span>
+            </div>    
+        {% else %}
+            <div style="margin-bottom: 25px;" class="tasks">
+                <h1 style="display: inline-block; text-decoration: line-through; color: green;">{{ task.title }}</h1> 
+                <span style="cursor: pointer; position: absolute; margin-top: 8px; margin-left: 25px; font-size: 20px; " class="badge bg-danger" hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}' hx-delete="{% url 'delete-task-page' task.pk %}" hx-target="#container" hx-swap="innerHTML" hx-confirm="Are you sure you want to delete?"> X </span>
+            </div>    
+        {% endif %}
+
+
             
-                
-                
-        {% endfor %}
-    {% endif %}
-</div>
+        
+    {% endfor %}
+{% else %}
+    <h1>No tasks yet, create one to get started!</h1>
+{% endif %}
